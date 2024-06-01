@@ -1,0 +1,42 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#"><img src="../../../../assets/images/PiesalesLogo.jpg" style="width:10rem"/></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" routerLink="/product">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/myorders">My Orders</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" aria-disabled="true">
+            About Us
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" routerLink="/product">About PieSales</a></li>
+            <li><a class="dropdown-item" routerLink="/product">About Pieworks</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" routerLink="/product">Career</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Contact</a>
+        </li>
+      </ul>
+
+      <div style="height: inherit; background-color: #e1f5e1;" class="rounded-5 mx-1" (click)="redirectToShoppingCart()">
+        <img src="../../../../assets/images/cartIcon.svg" class="p-3">
+      </div>
+      <div style="height: inherit; background-color: #e1f5e1;" class="rounded-5 mx-1" (click)="redirectToShoppingCart()">
+        <img src="../../../../assets/images/Profile.svg" class="p-3">
+      </div>
+      <div style="height: inherit; background-color: #e1f5e1;" class="rounded-5 mx-1" (click)="logout()">
+        <img src="../../../../assets/images/logout.svg" style="height: 4rem;" class="p-3">
+      </div>
+    </div>
+  </div>
+</nav>

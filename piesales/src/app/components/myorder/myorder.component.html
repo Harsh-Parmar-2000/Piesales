@@ -1,0 +1,62 @@
+<app-header></app-header>
+<div class="container-fluid">
+  <h2 class="text-center mb-4">My Orders</h2>
+  <div *ngFor="let order of myOrders; let i = index" class="card mb-4">
+    <div class="card-header" (click)="order.collapsed = !order.collapsed">
+      <h5 class="mb-0">
+        <button class="btn btn-primary" type="button" (click)="show(i)">
+          Track Order {{i + 1}} :-
+        </button>
+      </h5>
+    </div>
+    <div *ngIf="i == showhide">
+      <div class="card-body" *ngFor="let products of order.productDetails;">
+        <div class="row no-gutters">
+          <div class="col-md-4">
+            <img [src]="products.product.productImage" class="card-img" alt="Product Image">
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title">{{ products.product.productName }}</h5>
+              <p class="card-text">{{ products.product.productDescription }}</p>
+              <p class="card-text"><strong>Category:</strong> {{ products.product.productCategory }}</p>
+              <p class="card-text"><strong>Price:</strong> {{ products.product.productPrice | currency }}</p>
+              <p class="card-text"><strong>Expected Delivery:</strong> 15 June 2024
+              </p>
+            </div>
+          </div>
+        </div>
+        <h5 class="ml-3">Delivery Status</h5>
+        <div class="container mt-5">
+          <div class="row bg-light p-4 rounded shadow-sm">
+            <div class="col text-center position-relative">
+              <div class="rounded-circle bg-secondary mb-2 mx-auto circle" [ngClass]="{'bg-success': order.currentStatus >= 1}"></div>
+              <p class="mb-0" [ngClass]="{'font-weight-bold text-success': order.currentStatus >= 1}">Order Placed</p>
+              <div *ngIf="order.currentStatus >= 1" class="position-absolute bg-success connector"></div>
+            </div>
+            <div class="col text-center position-relative">
+              <div class="rounded-circle bg-secondary mb-2 mx-auto circle" [ngClass]="{'bg-success': order.currentStatus >= 2}"></div>
+              <p class="mb-0" [ngClass]="{'font-weight-bold text-success': order.currentStatus >= 2}">Processing</p>
+              <div *ngIf="order.currentStatus >= 2" class="position-absolute bg-success connector"></div>
+            </div>
+            <div class="col text-center position-relative">
+              <div class="rounded-circle bg-secondary mb-2 mx-auto circle" [ngClass]="{'bg-success': order.currentStatus >= 3}"></div>
+              <p class="mb-0" [ngClass]="{'font-weight-bold text-success': order.currentStatus >= 3}">Shipped</p>
+              <div *ngIf="order.currentStatus >= 3" class="position-absolute bg-success connector"></div>
+            </div>
+            <div class="col text-center position-relative">
+              <div class="rounded-circle bg-secondary mb-2 mx-auto circle" [ngClass]="{'bg-success': order.currentStatus >= 4}"></div>
+              <p class="mb-0" [ngClass]="{'font-weight-bold text-success': order.currentStatus >= 4}">Out for Delivery</p>
+              <div *ngIf="order.currentStatus >= 4" class="position-absolute bg-success connector"></div>
+            </div>
+            <div class="col text-center">
+              <div class="rounded-circle bg-secondary mb-2 mx-auto circle" [ngClass]="{'bg-success': order.currentStatus >= 5}"></div>
+              <p class="mb-0" [ngClass]="{'font-weight-bold text-success': order.currentStatus >= 5}">Delivered</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

@@ -1,0 +1,167 @@
+<app-header></app-header>
+
+<div class="container">
+  <h2 class="title-page">Shopping cart</h2>
+</div>
+
+<section class="section-content padding-y">
+  <div class="container">
+    <div class="row">
+      <main class="col-md-9">
+        <div class="card">
+          <div class="table-responsive">
+            <table class="table table-borderless table-shopping-cart">
+              <div *ngIf="cartItems.length > 0">
+              <thead class="text-muted">
+                <tr class="small text-uppercase">
+                  <th scope="col">Product</th>
+                  <th scope="col" width="120">Quantity</th>
+                  <th scope="col" width="120">Price</th>
+                  <th scope="col" class="text-right" width="200"></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of cartItems">
+                  <td>
+                    <figure class="itemside">
+                      <div class="aside px-2">
+                        <img
+                          src="{{ item.product.productImage }}"
+                          width="150px"
+                          class="img-sm"
+                        />
+                      </div>
+                      <figcaption class="info">
+                        <a href="#" class="title text-dark">{{
+                          item.product.productName
+                        }}</a>
+                        <p class="text-muted small">
+                          {{ item.product.productDescription }}
+                        </p>
+                      </figcaption>
+                    </figure>
+                  </td>
+                  <td>
+                    <p id="quantity">{{item.quantity}}</p>
+                  </td>
+                  <td>
+                    <div class="price-wrap">
+                      <h5 class="price">${{ item.product.productPrice * item.quantity }} / </h5>
+                      <small class="text-muted">${{ item.product.productPrice }} each</small>
+                    </div>
+                  </td>
+                  <td class="text-right">
+                    <a
+                      class="btn btn-danger text-light"
+                      (click)="removeFromCart(item.product.id)"
+                    >
+                      Remove</a
+                    >
+                  </td>
+                </tr>
+              </tbody>
+            </div>
+            <div *ngIf="cartItems.length <= 0">
+              <img  class="img-fluid" src="../../../assets/images/NoData.jpeg"/>
+            </div>
+            </table>
+          </div>
+
+          <div class="card-body border-top">
+            <button
+              type="button"
+              class="btn btn-primary"
+              (click)="checkOut(cartItems)"
+              data-bs-toggle="modal"
+              data-bs-target="#exampleModal"
+            >
+              Check-Out
+            </button>
+
+
+            <a href="#" class="btn btn-light">
+              <i class="fa fa-chevron-left"></i> Continue shopping
+            </a>
+          </div>
+        </div>
+
+        <div class="alert alert-success mt-3">
+          <p class="icontext">
+            <i class="icon text-success fa fa-truck"></i> Free Delivery within
+            1-2 weeks
+          </p>
+        </div>
+      </main>
+      <aside class="col-md-3">
+        <div class="card mb-3">
+          <div class="card-body">
+            <form>
+              <div class="form-group">
+                <label>Have coupon?</label>
+                <div class="input-group">
+                  <input
+                    type="text"
+                    class="form-control"
+                    [(ngModel)]="this.coupon"
+                    placeholder="Coupon code"
+                  />
+                  <span class="input-group-append">
+                    <button class="btn btn-primary" (click)="applyCoupon()">
+                      Apply
+                    </button>
+                  </span>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <dl class="dlist-align">
+              <dt>Total price:</dt>
+              <dd class="text-right">USD 568</dd>
+            </dl>
+            <dl class="dlist-align">
+              <dt>Discount:</dt>
+              <dd class="text-right">USD 658</dd>
+            </dl>
+            <dl class="dlist-align">
+              <dt>Total:</dt>
+              <dd class="text-right h5"><strong>$1,650</strong></dd>
+            </dl>
+            <hr />
+            <p class="text-center mb-3">
+              <img src="../../../assets/images/PayNow.jpeg" class="img-fluid" style="height: 6rem;" />
+            </p>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section class="section-name bg p-lg-0 py-5 px-2">
+  <div class="container">
+    <h6>Payment and refund policy</h6>
+    <p>
+      Lorem ipsum dolor sit amet, consect adipis elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+      veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+      commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+      velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+      cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
+      est laborum.
+    </p>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+      veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+      commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+      velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+      cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
+      est laborum.
+    </p>
+  </div>
+</section>
+<app-footer>
+</app-footer>

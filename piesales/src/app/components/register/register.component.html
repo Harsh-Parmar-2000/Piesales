@@ -1,0 +1,25 @@
+<div class="container-fluid" style="height: 100%;background-color: #e1f5e1;">
+  <div class="d-flex flex-row justify-content-center align-items-center" style="height: 100vh;">
+    <div class="col-md-6">
+      <form (ngSubmit)="register()">
+        <div class="mb-3">
+          <label for="name" class="form-label">Name</label>
+          <input type="text" class="form-control" id="name" name="name" [(ngModel)]="user.name">
+        </div>
+        <div class="mb-3">
+          <label for="email" class="form-label">Email address</label>
+          <input type="email" class="form-control" id="email" name="email" [(ngModel)]="user.email">
+        </div>
+        <div class="mb-3">
+          <label for="password" class="form-label">Password</label>
+          <input type="password" class="form-control" id="password" name="password" [(ngModel)]="user.password">
+        </div>
+        <div class="mb-3">
+          <label for="about" class="form-label">About</label>
+          <input type="text" class="form-control" id="about" name="about" [(ngModel)]="user.about">
+        </div>
+        <button type="submit" class="btn btn-primary">Sign-Up</button>
+      </form>
+    </div>
+  </div>
+</div>

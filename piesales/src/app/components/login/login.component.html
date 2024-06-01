@@ -1,0 +1,22 @@
+<div class="container-fluid" style="height: 100%;background-color: #e1f5e1;">
+  <div class="d-flex flex-column justify-content-center align-items-center" style="height: 100vh;">
+    <div style="width:70%" class="mb-5">
+      <img class="img-fluid" src="../../../assets/images/PiesalesLogo.jpg"/>
+    </div>
+    <div class="col-md-6">
+      <form (ngSubmit)="login()">
+        <div class="mb-3">
+          <label for="email" class="form-label">Email address</label>
+          <input type="email" class="form-control" id="email" name="email" [(ngModel)]="user.email">
+        </div>
+        <div class="mb-3">
+          <label for="password" class="form-label">Password</label>
+          <input type="password" class="form-control" id="password" name="password" [(ngModel)]="user.password">
+        </div>
+        <div class="text-center ">
+          <button type="submit" class="btn btn-primary px-5">Login</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

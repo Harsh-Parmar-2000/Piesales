@@ -1,0 +1,9 @@
+.bootsrap-image-container {
+  width: 100%;
+  padding: 0 5px; /* Optional: Adjust padding for spacing between images */
+}
+
+.bootsrap-image-container img {
+  width: 100%;
+  height: auto;
+}

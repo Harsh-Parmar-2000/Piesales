@@ -13,15 +13,15 @@ export class UserService {
   }
 
   public registerUser(user:any){
-    return this.http.post(`http://localhost:9091/auth/api/register`,user);
+    return this.http.post(`http://localhost:9090/auth/api/register`,user);
   }
 
   public login(user:any){
-    return this.http.post(`http://localhost:9091/auth/api/login`,user);
+    return this.http.post(`http://localhost:9090/auth/api/login`,user);
   }
 
   public getCurrentUser() {
-    return this.http.get(`http://localhost:9091/auth/api/logineduser`);
+    return this.http.get(`http://localhost:9090/auth/api/logineduser`);
   }
 
   public setTokenToLocalStorage(token:any){

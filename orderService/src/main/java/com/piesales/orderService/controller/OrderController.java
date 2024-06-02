@@ -18,7 +18,7 @@ import com.piesales.orderService.services.OrderService;
 
 @RestController
 @RequestMapping("/api/")
-@CrossOrigin(origins = "*")
+// @CrossOrigin(origins = "*")
 public class OrderController {
 
     @Autowired

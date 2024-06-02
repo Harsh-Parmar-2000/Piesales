@@ -11,11 +11,11 @@ export class ProductService {
   }
 
   public getAllProducts(){
-    return this.http.get(`http://localhost:9092/product/api/getAllProducts`);
+    return this.http.get(`http://localhost:9090/product/api/getAllProducts`);
   }
 
   public addToCart(cart: any) {
-    return this.http.post(`http://localhost:9093/cart/api/addToCart`,cart);
+    return this.http.post(`http://localhost:9090/cart/api/addToCart`,cart);
   }
 
 }

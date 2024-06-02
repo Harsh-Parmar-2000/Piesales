@@ -9,6 +9,6 @@ export class OrderService {
   constructor(private http: HttpClient) { }
 
   public getMyOrders(userId:any){
-    return this.http.get(`http://localhost:9094/order/api/getMyOrders/${userId}`);
+    return this.http.get(`http://localhost:9090/order/api/getMyOrders/${userId}`);
   }
 }

@@ -18,32 +18,31 @@ import com.piesales.cartService.payloads.CartDto;
 import com.piesales.cartService.services.ShoppingCartService;
 
 @RestController
-@RequestMapping("/api/")
-@CrossOrigin(origins = "*")
+// @CrossOrigin(origins = "*")
 public class CartController {
     @Autowired
     ShoppingCartService shoppingCartService;
 
-    @PostMapping("/addToCart")
+    @PostMapping("/cart/api/addToCart")
     public ResponseEntity<ShoppingCart> addToCart(@RequestBody ShoppingCart shoppingCart) {
         this.shoppingCartService.addToCart(shoppingCart);
         return new ResponseEntity<ShoppingCart>(shoppingCart, HttpStatus.OK);
     }
 
-    @GetMapping("/getMyCart/{userId}")
-    public ResponseEntity<List<CartDto>> getMyCart(@PathVariable int userId){
+    @GetMapping("/cart/api/getMyCart/{userId}")
+    public ResponseEntity<List<CartDto>> getMyCart(@PathVariable("userId") Integer userId){
         List<CartDto> myCart = this.shoppingCartService.getMyCart(userId);
         return new ResponseEntity<List<CartDto>>(myCart, HttpStatus.OK);
     }
     
-    @DeleteMapping("/emptyCart/{userId}")
+    @DeleteMapping("/cart/api/emptyCart/{userId}")
     public ResponseEntity<String> emptyMyCart(@PathVariable Integer userId){
         this.shoppingCartService.emptyMyCart(userId);
         return new ResponseEntity<String>("Deleted Successfully", HttpStatus.OK);
     }
 
-    @DeleteMapping("/removeFromCart/{userId}/{productId}")
-    public ResponseEntity<String> removeFromMyCart(@PathVariable Integer userId,@PathVariable Integer productId){
+    @DeleteMapping("/cart/api/removeFromCart/{userId}/{productId}")
+    public ResponseEntity<String> removeFromMyCart(@PathVariable("userId") Integer userId,@PathVariable("productId") Integer productId){
         this.shoppingCartService.removeProductFromCart(userId,productId);
         return new ResponseEntity<String>("Deleted Successfully", HttpStatus.OK);
     }

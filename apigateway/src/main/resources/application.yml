@@ -11,13 +11,13 @@ spring:
         - id: productService
           uri: http://localhost:9092
           predicates:
-            - Path=/products/**    
+            - Path=/product/**    
         - id: cartService
           uri: http://localhost:9093
           predicates:
             - Path=/cart/**
         - id: orderService
-          uri: http://localhost:8083
+          uri: http://localhost:9094
           predicates:
             - Path=/order/**
       globalcors:

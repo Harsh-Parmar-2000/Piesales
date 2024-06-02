@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CartService } from 'src/app/services/cart.service';
 import { UserService } from 'src/app/services/user.service';
 
@@ -11,7 +11,7 @@ import { UserService } from 'src/app/services/user.service';
 export class ShoppingcartComponent {
   cartItems:any;
   coupon:any;
-  constructor( private cartService: CartService, private userService: UserService, private router: Router) {}
+  constructor( private cartService: CartService, private userService: UserService, private router: Router, private activatedRoute: ActivatedRoute) {}
 
   ngOnInit(): void {
        console.log('Loading shopping cart');
@@ -43,13 +43,16 @@ export class ShoppingcartComponent {
     this.cartService.checkOut(userId,wrapItem).subscribe(
       (data:any)=>{
         alert("Thank You For Purchasing")
-        this.router.navigate(['myorders']);
+        this.router.navigateByUrl('/refresh', { skipLocationChange: true }).then(() => {
+          this.router.navigate(['myorders']);
+        });
       },
       (error:any) => {
         console.log('Error !');
         console.log(error);
       }
     )
+    this.router.navigate(['myorders']);
   }
 
   applyCoupon(){
@@ -72,13 +75,16 @@ export class ShoppingcartComponent {
     this.cartService.removeFromCart(userId,productId).subscribe(
       (data:any)=>{
         alert("Item Removed Successfully")
-        this.router.navigate(['myorder']);
+
       },
       (error:any) => {
         console.log('Error !');
         console.log(error);
       }
     )
+    const currentRoute = this.activatedRoute;
+    this.router.navigate(['myorders']);
   }
+
 
 }

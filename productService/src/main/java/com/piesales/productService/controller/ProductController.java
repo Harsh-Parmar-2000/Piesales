@@ -22,7 +22,7 @@ import com.piesales.productService.services.ProductService;
 
 @RestController
 @RequestMapping("/api/")
-@CrossOrigin(origins = "*")
+// @CrossOrigin(origins = "*")
 public class ProductController {
 
     @Autowired

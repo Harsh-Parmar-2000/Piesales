@@ -52,7 +52,8 @@ public class ShoppingCartServiceImpl implements ShoppingCartService{
         List<ShoppingCart> cartOfUser = this.shoppingCartRepo.findCart(userId);
 
         List<Integer> productIdsFromCart = cartOfUser.stream().map(pIds->pIds.getProductId()).collect(Collectors.toList());
-        String url = "http://localhost:9092/product/api/getProductsInMyCart";
+        String url = "http://localhost:9090/product/api/getProductsInMyCart";
+        System.out.println("Yes I am going to take products");
         ProductRequestDto requestingForProductDetails = new ProductRequestDto();
         requestingForProductDetails.setProductIds(productIdsFromCart);
         HttpHeaders headers = new HttpHeaders();
@@ -69,6 +70,7 @@ public class ShoppingCartServiceImpl implements ShoppingCartService{
             addProductWithQuantity.setQuantity(cartDetails.getQuantity());
             cartResponse.add(addProductWithQuantity);
         }
+        System.out.println("Yes I am going to take products - i got"+cartResponse);
         return cartResponse;
     }
 

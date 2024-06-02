@@ -16,12 +16,15 @@ public class AuthTokenService {
     private RestTemplate restTemplate;
 
     public String getAuthToken(String email, String password) {
-        String url = "http://localhost:9091/auth/api/login";
+        System.out.println("Yes I am calling");
+        System.out.println("Yes I am calling");
+        String url = "http://AUTHSERVICE/auth/api/login";
         JwtAuthRequest request = new JwtAuthRequest(email, password);
         HttpHeaders headers = new HttpHeaders();
         headers.set("Content-Type", "application/json");
         HttpEntity<JwtAuthRequest> entity = new HttpEntity<>(request, headers);
         ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.POST, entity, String.class);
+        System.out.println("Yes Still I am calling");
         return response.getBody();
     }
     

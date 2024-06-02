@@ -1,0 +1,38 @@
+spring:
+  application:
+    name: productService
+  datasource:
+    url: jdbc:mysql://localhost:3306/product_service
+    username: piesales
+    password: Piesales@123
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+    hibernate:
+      ddl-auto: update
+  logging:
+    level:
+      org:
+        springframework:
+          security: DEBUG
+  web:
+    cors:
+      mapping:
+        /**:
+          allowed-origins: "*"
+          allowed-methods: "*"
+server:
+  port: 9092
+  servlet:
+    context-path: /product
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+    instance:
+      prefer-ip-address: true
+    register-with-eureka: true
+    fetch-registry: false
